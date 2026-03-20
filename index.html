@@ -16,40 +16,44 @@
         <div class="blob"></div>
         <div class="blob"></div>
     </div>
-    <nav id="navbar">
+    <nav id="navbar" class="minimal-nav">
         <div class="nav-container">
             <a href="#" class="logo">SARA</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#socials">Connect</a></li>
-                <li><a href="#contact" class="cta-btn">Enquire</a></li>
-            </ul>
+            <button id="menu-toggle" class="menu-btn">
+                <span>MENU</span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
         </div>
     </nav>
 
-    <header class="hero" id="home">
-        <div class="container hero-grid">
-            <div class="hero-main">
-                <div class="hero-text-wrapper">
-                    <span class="subtitle fade-in">Digital Storyteller</span>
-                    <h1 class="reveal-text">Designing <span class="accent">Stories</span><br>Through Light.</h1>
-                    <p class="fade-in">A premium digital storyteller helping global brands find their unique voice through cinematic visuals and refined strategy.</p>
-                    <div class="hero-btns fade-in">
-                        <a href="#portfolio" class="primary-btn btn-magnetic">View Showcase</a>
-                        <a href="#process" class="secondary-btn btn-magnetic">Our Process</a>
-                    </div>
-                </div>
+    <div id="overlay-menu" class="overlay-menu">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul class="nav-links-overlay">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <header class="hero cinematic" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container centered-content">
+            <div class="name-wrapper reveal-up">
+                <div class="line"></div>
+                <h1 class="grand-title">SARA</h1>
+                <div class="line"></div>
             </div>
-            <div class="hero-visual reveal-image">
-                <div class="image-orb">
-                    <img src="./assets/creator_portrait.png" alt="SARA Portrait">
-                </div>
-                <div class="floating-card glass">
-                    <span class="accent">10M+</span>
-                    <p>Total Impressions</p>
-                </div>
-            </div>
+            <p class="hero-subtitle reveal-up" style="transition-delay: 0.2s;">
+                VISUAL DIRECTION | CONTENT STRATEGY | STORYTELLING
+            </p>
+        </div>
+        <div class="scroll-indicator fade-in">
+            <span>LEARN MORE</span>
+            <div class="arrow">↓</div>
         </div>
     </header>
 
