@@ -11,49 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-blobs">
-        <div class="blob"></div>
-        <div class="blob"></div>
-        <div class="blob"></div>
+    <div class="background-mesh">
+        <div class="mesh-orb orb-1"></div>
+        <div class="mesh-orb orb-2"></div>
     </div>
-    <nav id="navbar" class="minimal-nav">
-        <div class="nav-container">
+    
+    <nav id="navbar" class="stripe-nav">
+        <div class="container nav-container">
             <a href="#" class="logo">SARA</a>
-            <button id="menu-toggle" class="menu-btn">
-                <span>MENU</span>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
         </div>
     </nav>
 
-    <div id="overlay-menu" class="overlay-menu">
-        <button id="close-menu" class="close-btn">&times;</button>
-        <ul class="nav-links-overlay">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <header class="hero cinematic" id="home">
-        <div class="hero-overlay"></div>
-        <div class="container centered-content">
-            <div class="name-wrapper reveal-up">
-                <div class="line"></div>
-                <h1 class="grand-title"></h1>
-                <div class="line"></div>
+    <header class="hero stripe-hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge fade-in">Portfolio 2026</span>
+                <h1 class="reveal-text">Architecting <br>Digital <span class="glow">Elegance.</span></h1>
+                <p class="fade-in">Visual Direction and Strategic Content for the next generation of global creators. Focused on the intersection of light, shadow, and technical precision.</p>
+                <div class="hero-actions fade-in">
+                    <a href="#portfolio" class="primary-btn">View Projects</a>
+                    <a href="#contact" class="secondary-btn">Start a Project</a>
+                </div>
             </div>
-            <p class="hero-subtitle reveal-up" style="transition-delay: 0.2s;">
-                VISUAL DIRECTION | CONTENT STRATEGY | STORYTELLING
-            </p>
-        </div>
-        <div class="scroll-indicator fade-in">
-            <span>LEARN MORE</span>
-            <div class="arrow">↓</div>
         </div>
     </header>
 

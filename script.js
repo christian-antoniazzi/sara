@@ -60,42 +60,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Menu Toggle Logic
-    const menuToggle = document.getElementById('menu-toggle');
-    const overlayMenu = document.getElementById('overlay-menu');
-    const closeMenu = document.getElementById('close-menu');
-    const navLinksOverlay = document.querySelectorAll('.nav-links-overlay a');
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 
-    if (menuToggle && overlayMenu) {
-        menuToggle.addEventListener('click', () => {
-            overlayMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // Mesh Gradient Parallax
+    const meshOrbs = document.querySelectorAll('.mesh-orb');
+    window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40;
+        const y = (e.clientY / window.innerHeight - 0.5) * 40;
+        
+        meshOrbs.forEach((orb, i) => {
+            const factor = (i + 1) * 0.5;
+            orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
         });
+    });
 
-        const hideMenu = () => {
-            overlayMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        };
+    // Intersection Observer for Reveal Animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-        closeMenu.addEventListener('click', hideMenu);
-        navLinksOverlay.forEach(link => link.addEventListener('click', hideMenu));
-    }
-
-    // Scroll to section for indicator
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         });
-    }
+    }, observerOptions);
 
-    // Initial triggers for above the fold
+    document.querySelectorAll('.reveal-text, .reveal-up, .fade-in, .reveal-image').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Initial trigger for Hero
     setTimeout(() => {
-        const grandTitle = document.querySelector('.name-wrapper');
-        if (grandTitle) grandTitle.classList.add('active');
-        const heroSubtitle = document.querySelector('.hero-subtitle');
-        if (heroSubtitle) heroSubtitle.classList.add('active');
-        const scrollInd = document.querySelector('.scroll-indicator');
-        if (scrollInd) scrollInd.classList.add('active');
-    }, 100);
+        document.querySelectorAll('.hero .reveal-text, .hero .fade-in').forEach(el => {
+            el.classList.add('active');
+        });
+    }, 200);
 });
