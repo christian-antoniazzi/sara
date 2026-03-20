@@ -60,26 +60,77 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial triggers for above the fold
-    setTimeout(() => {
-        const heroText = document.querySelector('.reveal-text');
-        if (heroText) heroText.classList.add('active');
-        document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('active'));
-        const heroImg = document.querySelector('.reveal-image');
-        if (heroImg) heroImg.classList.add('active');
+    // Magnetic Buttons
+    const magneticBtns = document.querySelectorAll('.btn-magnetic');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
+            btn.style.boxShadow = `${-x * 0.1}px ${-y * 0.1}px 20px var(--accent-glow)`;
+        });
+        
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+            btn.style.boxShadow = '';
+        });
     });
+
+    // Custom Cursor (Subtle trailing dot)
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Style for custom cursor (added dynamically)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .custom-cursor {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s;
+            mix-blend-mode: difference;
+        }
+        .btn-magnetic:hover ~ .custom-cursor {
+            width: 40px;
+            height: 40px;
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--accent-purple);
+        }
+    `;
+    document.head.appendChild(style);
 
     // Background Blobs Mouse Follow
     const blobs = document.querySelectorAll('.blob');
     if (blobs.length > 0) {
         window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 40;
-            const y = (e.clientY / window.innerHeight - 0.5) * 40;
+            const x = (e.clientX / window.innerWidth - 0.5) * 60;
+            const y = (e.clientY / window.innerHeight - 0.5) * 60;
             
             blobs.forEach((blob, index) => {
-                const factor = (index + 1) * 0.5;
+                const factor = (index + 1) * 0.8;
                 blob.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
             });
         });
     }
+
+    // Initial triggers for above the fold
+    setTimeout(() => {
+        const firstReveal = document.querySelector('.reveal-text');
+        if (firstReveal) firstReveal.classList.add('active');
+        document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('active'));
+        const heroVisual = document.querySelector('.hero-visual');
+        if (heroVisual) heroVisual.classList.add('active');
+    }, 100);
 });
