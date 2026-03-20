@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">SARA</a>
@@ -24,69 +29,67 @@
     </nav>
 
     <header class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="reveal-text">Designing <span class="accent">Stories</span> Through Light.</h1>
-            <p class="fade-in">A digital storyteller helping brands find their unique voice in a crowded world.</p>
-            <div class="hero-btns fade-in">
-                <a href="#portfolio" class="primary-btn">View My Work</a>
-                <a href="#about" class="secondary-btn">Learn More</a>
+        <div class="container flex">
+            <div class="hero-content">
+                <h1 class="reveal-text">Designing <span class="accent">Stories</span><br>Through Light.</h1>
+                <p class="fade-in">A premium digital storyteller helping global brands find their unique voice through cinematic visuals and refined strategy.</p>
+                <div class="hero-btns fade-in">
+                    <a href="#portfolio" class="primary-btn">View Showcase</a>
+                    <a href="#about" class="secondary-btn">The Process</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image reveal-image">
-            <img src="./assets/creator_portrait.png" alt="Creator Portrait">
+            <div class="hero-image reveal-image">
+                <img src="./assets/creator_portrait.png" alt="SARA Portrait">
+            </div>
         </div>
     </header>
 
     <section id="about" class="section">
         <div class="container flex">
-            <div class="about-image reveal-left">
-                <img src="./assets/lifestyle_shot.png" alt="Lifestyle Shot">
-            </div>
-            <div class="about-text reveal-right">
-                <span class="subtitle">About Me</span>
-                <h2>Minimalist approach, <br>maximum impact.</h2>
-                <p>Hello, I'm Sara. I specialize in high-end visual storytelling and content strategy. With a focus on neutral palettes and clean aesthetics, I help bring a sense of calm and professionalism to every project I touch.</p>
+            <div class="about-text reveal-up">
+                <span class="subtitle">Curated Strategy</span>
+                <h2>Minimalist approach,<br><span class="accent">Maximum impact.</span></h2>
+                <p>I specialize in high-end visual storytelling and content strategy. Bringing a sense of calm, precision, and luxury to the digital landscape.</p>
                 <div class="stats">
-                    <div class="stat-item">
+                    <div class="stat-item glass p-4">
                         <span class="number">50+</span>
-                        <span class="label">Collaborations</span>
+                        <span class="label">Brands</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="number">10k</span>
-                        <span class="label">Total Reach</span>
+                    <div class="stat-item glass p-4">
+                        <span class="number">10M+</span>
+                        <span class="label">Reach</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="section bg-light">
+    <section id="portfolio" class="section">
         <div class="container">
             <div class="section-header center">
-                <span class="subtitle">My Work</span>
-                <h2>Recent Projects</h2>
+                <span class="subtitle">The Showcase</span>
+                <h2>Recent Selected Work</h2>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item reveal-up">
-                    <img src="./assets/workspace_thumb.png" alt="Project 1">
+                    <img src="./assets/workspace_thumb.png" alt="Visual Identity">
                     <div class="item-overlay">
                         <h3>Visual Identity</h3>
                         <p>Branding & Strategy</p>
                     </div>
                 </div>
-                <!-- Mock placeholders for other items -->
-                <div class="portfolio-item reveal-up">
+                <div class="portfolio-item reveal-up" style="transition-delay: 0.1s;">
                     <div class="mock-img"></div>
                     <div class="item-overlay">
-                        <h3>Content Strategy</h3>
-                        <p>Digital Presence</p>
+                        <h3>Content Direction</h3>
+                        <p>Digital Narrative</p>
                     </div>
                 </div>
-                <div class="portfolio-item reveal-up">
+                <div class="portfolio-item reveal-up" style="transition-delay: 0.2s;">
                     <div class="mock-img"></div>
                     <div class="item-overlay">
                         <h3>Photography</h3>
-                        <p>Visual Narratives</p>
+                        <p>Cinematic Series</p>
                     </div>
                 </div>
             </div>
@@ -96,8 +99,8 @@
     <section id="contact" class="section">
         <div class="container narrow">
             <div class="contact-card reveal-up">
-                <h2>Let's create something <br>extraordinary.</h2>
-                <p>Ready to level up your content strategy? Drop me a message and let's discuss how we can work together.</p>
+                <h2>Let's create something<br><span class="accent">extraordinary.</span></h2>
+                <p>Ready to redefine your digital presence? Inquire below.</p>
                 <form id="contact-form">
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" required>
@@ -106,9 +109,9 @@
                         <input type="email" placeholder="Email Address" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Tell me about your project" rows="4" required></textarea>
+                        <textarea placeholder="Tell me about your vision" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
                 </form>
             </div>
         </div>
@@ -118,13 +121,12 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="#" class="logo">SARA</a>
-                <p>&copy; 2026 Sara Studio. All rights reserved.</p>
+                <p class="text-secondary">&copy; 2026 Sara Studio. Refined Storytelling.</p>
             </div>
             <div class="social-links">
                 <a href="#">Instagram</a>
                 <a href="#">TikTok</a>
                 <a href="#">YouTube</a>
-                <a href="#">LinkedIn</a>
             </div>
         </div>
     </footer>
