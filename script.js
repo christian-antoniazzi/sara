@@ -60,32 +60,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Navbar Scroll Effect
+    // Theme Switcher Logic
+    const themeBtn = document.getElementById('theme-btn');
+    const themes = ['light', 'dark', 'mono'];
+    let currentThemeIndex = localStorage.getItem('theme-index') || 0;
+
+    const applyTheme = (index) => {
+        const theme = themes[index];
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme-index', index);
+        
+        // Update theme dot color or icon if needed
+        const themeDot = document.querySelector('.theme-dot');
+        if (themeDot) {
+            themeDot.style.background = 'var(--bg-primary)';
+        }
+    };
+
+    // Apply saved theme on load
+    applyTheme(currentThemeIndex);
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            currentThemeIndex = (parseInt(currentThemeIndex) + 1) % themes.length;
+            applyTheme(currentThemeIndex);
+        });
+    }
+
+    // Scroll Header Effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
     });
 
-    // Mesh Gradient Parallax
-    const meshOrbs = document.querySelectorAll('.mesh-orb');
-    window.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 40;
-        const y = (e.clientY / window.innerHeight - 0.5) * 40;
-        
-        meshOrbs.forEach((orb, i) => {
-            const factor = (i + 1) * 0.5;
-            orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-        });
-    });
-
-    // Intersection Observer for Reveal Animations
+    // Reveal Animations
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -96,14 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal-text, .reveal-up, .fade-in, .reveal-image').forEach(el => {
+    document.querySelectorAll('.reveal-up, .reveal-image, .fade-in').forEach(el => {
         observer.observe(el);
     });
-
-    // Initial trigger for Hero
-    setTimeout(() => {
-        document.querySelectorAll('.hero .reveal-text, .hero .fade-in').forEach(el => {
-            el.classList.add('active');
-        });
-    }, 200);
 });

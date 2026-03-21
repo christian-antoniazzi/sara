@@ -11,57 +11,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-mesh">
-        <div class="mesh-orb orb-1"></div>
-        <div class="mesh-orb orb-2"></div>
-    </div>
-    
-    <nav id="navbar" class="stripe-nav">
+    <nav id="navbar" class="editorial-nav">
         <div class="container nav-container">
             <a href="#" class="logo">doesabrimswim</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Work</a></li>
+                </ul>
+                <div class="theme-switcher">
+                    <button id="theme-btn" class="theme-btn" title="Switch Theme">
+                        <span class="theme-dot"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <header class="hero stripe-hero" id="home">
+    <header class="hero editorial-hero" id="home">
         <div class="container">
-            <div class="hero-content">
-                <span class="badge fade-in">Portfolio 2026</span>
-                <h1 class="reveal-text">Architecting <br>Digital <span class="glow">Elegance.</span></h1>
-                <p class="fade-in">Visual Direction and Strategic Content for the next generation of global creators. Focused on the intersection of light, shadow, and technical precision.</p>
-                <div class="hero-actions fade-in">
-                    <a href="#portfolio" class="primary-btn">View Projects</a>
-                    <a href="#contact" class="secondary-btn">Start a Project</a>
+            <div class="hero-title-wrapper">
+                <h1 class="massive-title reveal-up">doesabrim<br>swim.</h1>
+                <div class="hero-meta reveal-up" style="transition-delay: 0.3s;">
+                    <span class="editorial-label">Portfolio 2026</span>
+                    <p class="hero-desc">Independent Visual Direction & Storytelling. <br>Design for the digital frontier.</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="process" class="section">
+    <section id="process" class="section editorial-insight">
         <div class="container">
-            <div class="section-header">
-                <span class="subtitle">The Methodology</span>
-                <h2>How we build <span class="accent">Greatness.</span></h2>
-            </div>
-            <div class="process-grid">
-                <div class="process-item reveal-up">
-                    <div class="step-num">01</div>
-                    <h3>Immersion</h3>
-                    <p>Understanding the soul of your brand to craft a narrative that resonates deeply with your audience.</p>
+            <div class="editorial-grid-v1">
+                <div class="editorial-text reveal-up">
+                    <span class="editorial-label">The Insight</span>
+                    <h2>The Studio <br>Profile Global. <br>Independent. <br>Vision-led.</h2>
                 </div>
-                <div class="process-item reveal-up">
-                    <div class="step-num">02</div>
-                    <h3>Creation</h3>
-                    <p>Executing with precision, using light and shadow to bring cinematic quality to every frame.</p>
-                </div>
-                <div class="process-item reveal-up">
-                    <div class="step-num">03</div>
-                    <h3>Diffusion</h3>
-                    <p>A refined strategy to ensure your content reaches the right eyes with maximum emotional impact.</p>
+                <div class="detailed-process reveal-up" style="transition-delay: 0.2s;">
+                    <div class="process-col">
+                        <span class="step-num">01</span>
+                        <h3>Immersion</h3>
+                        <p>Understanding the brand soul to craft deeply resonant narratives.</p>
+                    </div>
+                    <div class="process-col">
+                        <span class="step-num">02</span>
+                        <h3>Creation</h3>
+                        <p>Precision execution bringing cinematic quality to every frame.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,32 +90,31 @@
         </div>
     </section>
 
-    <section id="portfolio" class="section">
-        <div class="container">
-            <div class="section-header center">
-                <span class="subtitle">The Showcase</span>
-                <h2>Recent Selected Work</h2>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item reveal-up">
-                    <img src="./assets/workspace_thumb.png" alt="Visual Identity">
-                    <div class="item-overlay">
-                        <h3>Visual Identity</h3>
-                        <p>Branding & Strategy</p>
+    <section id="portfolio" class="section editorial-gallery">
+        <div class="container full-bleed-mobile">
+            <div class="editorial-label center">Selected Works</div>
+            <div class="editorial-grid-v2">
+                <div class="gallery-item large reveal-image">
+                    <div class="img-wrapper">
+                        <img src="./assets/workspace_thumb.png" alt="Visual Identity">
+                    </div>
+                    <div class="gallery-meta">
+                        <span class="meta-label">Subject: Portraiture</span>
+                        <h3>Visual Direction / Archive Print Production</h3>
                     </div>
                 </div>
-                <div class="portfolio-item reveal-up" style="transition-delay: 0.1s;">
+                <div class="gallery-item reveal-image">
                     <div class="mock-img"></div>
-                    <div class="item-overlay">
-                        <h3>Content Direction</h3>
-                        <p>Digital Narrative</p>
+                    <div class="gallery-meta">
+                        <span class="meta-label">Digital Narrative</span>
+                        <h3>Editorial & Fashion</h3>
                     </div>
                 </div>
-                <div class="portfolio-item reveal-up" style="transition-delay: 0.2s;">
+                <div class="gallery-item mid reveal-image">
                     <div class="mock-img"></div>
-                    <div class="item-overlay">
-                        <h3>Photography</h3>
-                        <p>Cinematic Series</p>
+                    <div class="gallery-meta">
+                        <span class="meta-label">Cinematic Series</span>
+                        <h3>Photography / Still Life</h3>
                     </div>
                 </div>
             </div>
