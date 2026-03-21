@@ -1,15 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sticky Navbar
-    const navbar = document.getElementById('navbar');
+    /* --- Scroll & UI Interactions --- */
+    const nav = document.querySelector('nav');
+    
     window.addEventListener('scroll', () => {
+        // Navbar Scrolled State
         if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+            nav.style.background = 'rgba(255, 255, 255, 0.8)';
+            nav.style.backdropFilter = 'blur(20px)';
+            nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
         } else {
-            navbar.classList.remove('scrolled');
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.borderBottom = 'none';
         }
     });
 
-    // Intersection Observer for Animations
+    /* --- Checkout Form Logic --- */
+    const checkoutForm = document.getElementById('checkout-form');
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = checkoutForm.querySelector('.btn-checkout');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+            btn.style.opacity = '0.5';
+            
+            // Simulate Stripe Request
+            setTimeout(() => {
+                btn.textContent = 'Success!';
+                btn.style.background = '#10b981'; // Green
+                btn.style.opacity = '1';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'var(--text-primary)';
+                    btn.disabled = false;
+                    checkoutForm.reset();
+                }, 3000);
+            }, 1500);
+        });
+    }
+
+    /* --- Intersection Observer for Animations --- */
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -19,99 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                // If it's the hero, we might want to trigger child animations
+                if (entry.target.classList.contains('hero')) {
+                    entry.target.querySelectorAll('.animate-fade-up').forEach((el, index) => {
+                        el.style.animationDelay = `${index * 0.1}s`;
+                    });
+                }
             }
         });
     }, observerOptions);
 
-    // Target elements
-    const animateElements = document.querySelectorAll('.reveal-text, .reveal-up, .fade-in, .reveal-image');
-    animateElements.forEach(el => observer.observe(el));
-
-    // Dynamic delay for portfolio items
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach((item, index) => {
-        if (!item.style.transitionDelay) {
-            item.style.transitionDelay = `${index * 0.1}s`;
-        }
-    });
-
-    // Form Handling (Visual Only)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('.submit-btn');
-            btn.textContent = 'Message Sent';
-            btn.style.background = '#10b981'; // Green success
-            contactForm.reset();
-            setTimeout(() => {
-                btn.textContent = 'Send Inquiry';
-                btn.style.background = '';
-            }, 3000);
-        });
-    }
-
-    // Parallax effect for hero image
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const heroImg = document.querySelector('.hero-image img');
-        if (heroImg && window.innerWidth > 991) {
-            heroImg.style.transform = `translateY(${scrolled * 0.1}px)`;
-        }
-    });
-
-    // Theme Switcher Logic
-    const themeBtn = document.getElementById('theme-btn');
-    const themes = ['light', 'dark', 'mono'];
-    let currentThemeIndex = localStorage.getItem('theme-index') || 0;
-
-    const applyTheme = (index) => {
-        const theme = themes[index];
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme-index', index);
-        
-        // Update theme dot color or icon if needed
-        const themeDot = document.querySelector('.theme-dot');
-        if (themeDot) {
-            themeDot.style.background = 'var(--bg-primary)';
-        }
-    };
-
-    // Apply saved theme on load
-    applyTheme(currentThemeIndex);
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            currentThemeIndex = (parseInt(currentThemeIndex) + 1) % themes.length;
-            applyTheme(currentThemeIndex);
-        });
-    }
-
-    // Scroll Header Effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Reveal Animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal-up, .reveal-image, .fade-in').forEach(el => {
+    document.querySelectorAll('.animate-fade-up').forEach(el => {
         observer.observe(el);
     });
 });
